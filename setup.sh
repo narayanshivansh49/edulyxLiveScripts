@@ -33,7 +33,7 @@ chown meteor:meteor $TARGET
 
 echo "Copying files..."
 cp default.pdf /var/www/bigbluebutton-default/default.pdf
-cp favicon.ico /var/www/bigbluebutton-default/favicon.ico
+cp fav.png /var/www/bigbluebutton-default/fav.png
 
 chmod +r /var/www/bigbluebutton-default/default.pdf
-chmod +r /var/www/bigbluebutton-default/favicon.ico
+chmod +r /var/www/bigbluebutton-default/fav.png
