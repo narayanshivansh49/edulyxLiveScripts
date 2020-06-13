@@ -1,6 +1,7 @@
 wget https://github.com/narayanshivansh49/edulyxLive/releases/download/v1.1/bigbluebutton-html5.tar.gz
 wget https://github.com/narayanshivansh49/edulyxLive/releases/download/v1.1/default.pdf
-wget https://github.com/narayanshivansh49/edulyxLive/releases/download/v1.1/fav.png
+wget https://github.com/narayanshivansh49/edulyxLive/releases/download/v1.1/favicon.ico
+
 tar -xvf bigbluebutton-html5.tar.gz
 rm bigbluebutton-html5.tar.gz
 cp /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml settings.yml
@@ -25,6 +26,7 @@ yq w -i $TARGET public.app.branding.displayBrandingArea true
 yq w -i $TARGET public.app.preloadNextSlides 2
 yq w -i $TARGET public.presentation.uploadSizeMax 200000000
 
+# not working default messages code from google groups
 #echo "Setting default messages..."
 #sed -i "s@^defaultWelcomeMessage=.*@defaultWelcomeMessage=Benvenuto in <b>%%CONFNAME%%</b>!<br><br>Per unirti alla chiamata clicca sull'icona del telefono.@g" /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 #sed -i "s@^defaultWelcomeMessageFooter=.*@defaultWelcomeMessageFooter=Questo servizio \&egrave; offerto da <a href=\"https://livemeeting.tech/\" target=\"_blank\"><u>LiveMeeting</u></a>.@g" /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
@@ -33,7 +35,9 @@ chown meteor:meteor $TARGET
 
 echo "Copying files..."
 cp default.pdf /var/www/bigbluebutton-default/default.pdf
-cp fav.png /var/www/bigbluebutton-default/fav.png
+cp favicon.ico /var/www/bigbluebutton-default/favicon.ico
 
 chmod +r /var/www/bigbluebutton-default/default.pdf
-chmod +r /var/www/bigbluebutton-default/fav.png
+chmod +r /var/www/bigbluebutton-default/favicon.ico
+
+sudo bbb-conf --restart
